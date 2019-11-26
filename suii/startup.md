@@ -3,10 +3,8 @@
 The startup of suii has multiple parts mainly divided in:
 
 - [Hardware startup](#hardware-startup)
-- [Control Suii](#control-to-suii)
+- [Control Suii](#control-suii)
 - [Making a map](#making-a-map)
-- [Editing a map](#edit-the-map)
-- 
 
 ### Hardware startup:
 
@@ -92,7 +90,7 @@ Now edit in all the No Go Zones:
 * Chairs
 * Non seeable objects
 
-
+### Starting the rest:
 
 Edit the suii_low.launch to use the new maps 
 
@@ -108,7 +106,7 @@ Edit the suii_low.launch to use the new maps
 
  Start vision (new terminal)  
 
-```
+```bash
  source envpy3 && python3 ~/catkin_ws/src/suii/suii_vision/scripts/vision_core/vision_manager.py
 ```
 
