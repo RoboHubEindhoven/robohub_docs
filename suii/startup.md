@@ -32,7 +32,7 @@ $ ssh suii@NUC.lan  # Login with password
 To manually control suii:
 
 ```bash
-$ rosrun rosbridge_server rosbridge_websocket
+$ roslaunch rosbridge_server rosbridge_websocket
 ```
 
 then go to [192.168.2.113:5000/drive](192.168.2.113:5000/drive)
@@ -64,23 +64,24 @@ $ source ~/.bashrc
 
 To start the software run in suii:  
 
-```
- roslaunch suii_bringup mapping.launch
+```bash
+$ roslaunch suii_bringup mapping.launch
 ```
 
 Drive around with the robot and visualize on you own with RViz.
 
 ```bash
 # Save the map
+$ cd ~/maps
 $ rosrun map_server map_saver -f YOUR_MAP_NAME
 ```
 
 Now copy the map to your pc and edit it with [Gimp](https://www.gimp.org/):
 
 ```bash
-exit  # get out of the ssh session
-scp suii@NUC.lan:maps/YOUR_MAP_NAME.pgm ./
-gimp YOUR_MAP_NAME.pgm
+$ exit  # get out of the ssh session
+$ scp suii@NUC.lan:maps/YOUR_MAP_NAME.pgm ./
+$ gimp YOUR_MAP_NAME.pgm
 ```
 
 Now edit in all the No Go Zones:
@@ -94,30 +95,31 @@ Now edit in all the No Go Zones:
 
 Edit the suii_low.launch to use the new maps 
 
-```
- rosed suii_bringup suii_low.launch
+```bash
+$ rosed suii_bringup suii_low.launch
 ```
 
  Start suii_low 
 
-```
+```bash
  roslaunch suii_bringup suii_low.launch
 ```
 
  Start vision (new terminal)  
 
 ```bash
- source envpy3 && python3 ~/catkin_ws/src/suii/suii_vision/scripts/vision_core/vision_manager.py
+$ source envpy3 && python3   
+$ ~/catkin_ws/src/suii/suii_vision/scripts/vision_core/vision_manager.py
 ```
 
  Start suii_high (new terminal) 
 
-```
- roslaunch suii_bringup suii_high.launch
+```bash
+$ roslaunch suii_bringup suii_high.launch
 ```
 
  Test navigation with the use of rviz (don`t forget to set suii at the right pose in the map) * use rviz to drive suii to the workstations and save the coordinates to the "waypoint_list.json" in the "suii_demo/config" folder * Edit the task_list.json to make a demo in the "suii_demo/config" folder *run the demo: 
 
-```
- roslaunch suii_demo demo.launch
+```bash
+$ roslaunch suii_demo demo.launch
 ```
